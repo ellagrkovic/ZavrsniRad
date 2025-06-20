@@ -1,0 +1,22 @@
+# macOS sistemske datoteke
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtualno okruženje
+venv/
+env/
+
+# Editor postavke (npr. VS Code)
+.vscode/
+
+# Logovi
+*.log
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+*.zip
+
