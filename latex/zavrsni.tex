@@ -1,0 +1,75 @@
+\documentclass{fer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[croatian]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\title{Algoritam za raspoređivanje zadataka za više robota uz pokretnu traku}
+\author{Ella Grković}
+\date{Zagreb, srpanj 2025.}
+
+\begin{document}
+
+\maketitle
+
+\chapter{Uvod}
+
+Razvoj robotike posljednjih desetljeća ima snažan utjecaj na industriju, gospodarstvo i svakodnevni život. Roboti se danas koriste u raznim granama – od automatizirane proizvodnje i logistike, do medicine, istraživanja svemira i kućne upotrebe. U industrijskom okruženju, posebno u kontekstu pametnih tvornica i automatizirane proizvodnje, primjena robota postaje sve sofisticiranija i sveprisutan je zahtjev za njihovim učinkovitim upravljanjem i suradnjom.
+
+Industrijski roboti već odavno ne obavljaju samo jednostavne, ponavljajuće zadatke. Umjesto toga, sve se više integriraju u kompleksne sustave gdje je važno planiranje, koordinacija i prilagodba zadacima u stvarnom vremenu. U takvim sustavima, u kojima više robota djeluje istovremeno, ključno je osigurati optimalnu raspodjelu zadataka kako bi se postigla maksimalna učinkovitost, pouzdanost i fleksibilnost.
+
+\chapter{Opis problema}
+
+Jedan od konkretnih i čestih scenarija u industrijskoj automatizaciji uključuje robotske ruke koje preuzimaju predmete s pokretne trake. Takvi sustavi nalaze primjenu u sortirnim centrima, pakirnicama, prehrambenoj industriji i drugim okruženjima u kojima je važno brzo i precizno manipulirati objektima u pokretu.
+
+Upravo takav problem predstavlja temelj ovog završnog rada, koji se fokusira na razvoj algoritma za raspoređivanje zadataka više robota uz pokretnu traku. Ključni izazov u ovakvim sustavima jest kako učinkovito dodijeliti zadatke – odnosno predmete na traci – raspoloživim robotskim rukama. Budući da se objekti ne pojavljuju istovremeno, a njihova pozicija varira, potrebno je u stvarnom vremenu donositi odluke koji će robot pokupiti koji predmet. Ako se zadaci ne dodijele optimalno, može doći do preklapanja, neiskorištenosti robota ili propuštanja objekata, što smanjuje ukupnu učinkovitost sustava.
+
+Problem se stoga može promatrati kao optimizacijski problem dodjele zadataka u kojem je cilj maksimizirati određene pokazatelje performansi, kao što su broj uspješno pokupljenih predmeta, iskorištenost robotskih ruku i uravnoteženost opterećenja među robotima. Rješenje ovog problema nije trivijalno, jer uključuje više čimbenika poput položaja objekata, vremena dolaska, dosega robota i ograničenja u njihovom djelovanju.
+
+U ovom završnom radu pristupa se ovom izazovu kroz izgradnju i analizu algoritama za dodjelu zadataka više robota uz pokretnu traku. Bit će implementirana dva različita pristupa – jedan temeljen na heuristikama (npr. pravila prioriteta), a drugi na formalnijim metodama optimizacije (npr. dinamičko programiranje). Njihova učinkovitost analizirat će se na temelju simuliranih ulaznih podataka, s ciljem boljeg razumijevanja kompromisa između preciznosti, brzine izvođenja i složenosti algoritama.
+
+\chapter{Rezultati}
+
+U sklopu ovog rada implementirana su dva pristupa za dodjelu zadataka robotima koji preuzimaju pakete s pokretne trake: pohlepan algoritam, koji u svakom trenutku donosi lokalno optimalnu odluku, te optimalni algoritam, koji koristi optimizacijski pristup s ciljem maksimizacije ukupnog broja preuzetih paketa.
+
+Evaluacija algoritama provedena je na unaprijed generiranim skupovima podataka koji sadrže 5, 10 i 15 paketa po testnom skupu. Rezultati su prikazani boxplot dijagramima i sažeti u tablicama.
+
+\begin{table}[h]
+\centering
+\caption{Usporedba rezultata – pohlepni vs. optimalni}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+Broj paketa & Algoritam & Prosjek & Medijan & Min & Max \\
+\midrule
+5 & Pohlepan & 4.5 & 5 & 3 & 5 \\
+5 & Optimalni & 5.0 & 5 & 5 & 5 \\
+10 & Pohlepan & 7.2 & 7 & 4 & 9 \\
+10 & Optimalni & 9.5 & 10 & 8 & 10 \\
+15 & Pohlepan & 9.1 & 9 & 7 & 11 \\
+15 & Optimalni & 12.6 & 13 & 10 & 14 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Za dodatnu evaluaciju optimalnog algoritma testiran je njegov učinak kod različitih početnih rasporeda robota (standardni i obrnuti). Rezultati pokazuju da položaj robota može utjecati na broj uspješno preuzetih paketa, osobito pri većem broju paketa.
+
+\begin{table}[h]
+\centering
+\caption{Učinak rasporeda robota}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+Broj paketa & Konfiguracija & Prosjek & Medijan & Min & Max \\
+\midrule
+5 & Optimalni & 5.0 & 5 & 5 & 5 \\
+5 & Obrnuti & 5.0 & 5 & 5 & 5 \\
+10 & Optimalni & 9.5 & 10 & 8 & 10 \\
+10 & Obrnuti & 10.0 & 10 & 10 & 10 \\
+15 & Optimalni & 12.6 & 13 & 10 & 14 \\
+15 & Obrnuti & 14.1 & 14 & 13 & 15 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
