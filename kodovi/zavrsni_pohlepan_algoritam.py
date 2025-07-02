@@ -9,7 +9,7 @@ workspaces = [(10, 0), (20, 10)]
 num_robots = len(robots)
 
 # Generiraj pakete
-num_items = int(input("Unesi broj paketa: "))
+num_items = int(input("Unesi broj predmeta: "))
 # items = [(44, 6), (38, 2), (27, 9), (35, 1), (30, 4), (25, 8)]
 
 items = []
@@ -21,7 +21,7 @@ for i in range(num_items):
 
 # Prikaži koordinate
 for i, (x, y) in enumerate(items):
-    print(f'Paket{i+1} : ({x}, {y})')
+    print(f'Predmet{i+1} : ({x}, {y})')
 
 # Greedy dodjela
 robot_timeline = []
@@ -66,12 +66,12 @@ for i, (xi, yi) in enumerate(items):
         results.append({'item': i, 'robot': None})
 
 # --- Ispis rezultata greedy algoritma ---
-print(f'\n[RJEŠENJE - GREEDY] Broj uzetih paketa: {sum(1 for r in results if r["robot"] is not None)}\n')
+print(f'\n[RJEŠENJE - GREEDY] Broj uzetih predmeta: {sum(1 for r in results if r["robot"] is not None)}\n')
 
 for task in results:
     i = task['item']
     if task['robot'] is not None:
-        print(f'Paket{i+1} uzet u t = {task["start"]}')
+        print(f'Predmet{i+1} uzet u t = {task["start"]}')
         print(f'  uzima robot {task["robot"]+1}')
         print(f'  trajanje dohvaćanja: {task["duration"]} sekundi\n')
     else:

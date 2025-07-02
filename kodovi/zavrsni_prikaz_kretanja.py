@@ -271,7 +271,7 @@ def update(frame):
 ani = animation.FuncAnimation(fig, update, frames=num_frames, interval=frame_interval, blit=True)
 plt.tight_layout()
 plt.show()
-#ani.save("kodovi/kretanje.gif", writer='pillow', fps=10)
+# ani.save("kodovi/kretanje.gif", writer='pillow', fps=10)
 
 
 

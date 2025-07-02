@@ -8,7 +8,7 @@ robots = [(5, 10), (15, 10)]  # (x_k, y_k) za k=0,1
 workspaces = [(10, 0), (20, 10)]  # (W_{k-1}, W_k) za k=0,1
 num_robots = len(robots)
 
-num_items = int(input("Unesi broj paketa: "))
+num_items = int(input("Unesi broj predmeta: "))
 
 items = []
 
@@ -19,7 +19,7 @@ for i in range(num_items):
 
 # ispis koordinata paketa
 for i, item in enumerate(items):
-        print(f"Paket{i+1} : ({item[0]}, {item[1]})")
+        print(f"Predmet{i+1} : ({item[0]}, {item[1]})")
 
 T_MAX = 50
 H = 1000
@@ -110,16 +110,16 @@ status = solver.Solve(model)
 
 # Ispis
 if status in (cp_model.OPTIMAL, cp_model.FEASIBLE):
-    print(f'\n[RJEŠENJE] Broj uzetih paketa: {int(solver.ObjectiveValue())}\n')
+    print(f'\n[RJEŠENJE] Broj uzetih predmeta: {int(solver.ObjectiveValue())}\n')
     for i in range(num_items):
         if solver.Value(z[i]):
-            print(f'Paket{i+1} uzet u t = {solver.Value(t[i])}')
+            print(f'Predmet{i+1} uzet u t = {solver.Value(t[i])}')
             for k in range(num_robots):
                 if solver.Value(alpha[k][i]):
                     print(f'  uzima robot {k+1}')
-                    print(f'  trajanje dohvaćanja: {solver.Value(Tk[k][i])} sekundi\n')
+                    print(f'  trajanje obrade posla: {solver.Value(Tk[k][i])} sekundi\n')
         else:
-            print(f'Paket{i+1} nije uzet\n')
+            print(f'Predmet{i+1} nije uzet\n')
 else:
     print('Nema rješenja.')
     
@@ -180,7 +180,7 @@ for idx, k in enumerate(range(num_robots)):
 ax.set_yticks(yticks)
 ax.set_yticklabels(yticklabels)
 ax.set_xlabel("Vrijeme (sekunde)")
-ax.set_title("Raspored dohvaćanja paketa po robotima")
+ax.set_title("Raspored trajanja obrade predmeta po robotima")
 ax.grid(True)
 plt.tight_layout()
 plt.show()

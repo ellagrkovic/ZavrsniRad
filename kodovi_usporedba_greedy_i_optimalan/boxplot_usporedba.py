@@ -15,9 +15,9 @@ data = [
 ]
 
 labels = [
-    "Greedy (5)", "Optimalni (5)",
-    "Greedy (10)", "Optimalni (10)",
-    "Greedy (15)", "Optimalni (15)"
+    "Greedy (5)", "Optimizacijski (5)",
+    "Greedy (10)", "Optimizacijski (10)",
+    "Greedy (15)", "Optimizacijski (15)"
 ]
 
 colors = ["#FF9999", "#99CCFF", "#FF9999", "#99CCFF", "#FF9999", "#99CCFF"]
@@ -43,8 +43,8 @@ for median in box['medians']:
     median.set(color='black', linewidth=2)
 
 # Naslovi i osi
-plt.title("Usporedba Greedy i Optimalnog algoritma po broju paketa", fontsize=14)
-plt.ylabel("Broj preuzetih paketa", fontsize=12)
+plt.title("Usporedba pohlepnog i optimizacijskog algoritma po broju predmeta", fontsize=14)
+plt.ylabel("Broj preuzetih predmeta", fontsize=12)
 plt.xticks(rotation=20, fontsize=10)
 plt.yticks(fontsize=10)
 plt.grid(axis='y', linestyle=':', alpha=0.7)
